@@ -1,12 +1,14 @@
 (ns choose.handler
-  (:require 
-            [choose.layout :refer [error-page]]
-            [choose.routes.home :refer [home-routes]]
-            [compojure.core :refer [routes wrap-routes]]
-            [compojure.route :as route]
-            [choose.env :refer [defaults]]
-            [mount.core :as mount]
-            [choose.middleware :as middleware]))
+  (:require
+    [choose.layout :refer [error-page]]
+    [choose.routes.home :refer [home-routes]]
+    [compojure.core :refer [routes wrap-routes]]
+    [compojure.route :as route]
+    [choose.env :refer [defaults]]
+    [mount.core :as mount]
+    [choose.middleware :as middleware]
+  )
+)
 
 (mount/defstate init-app
   :start ((or (:init defaults) identity))

@@ -4,6 +4,7 @@
     [choose.db.core :as db]
     [compojure.core :refer [defroutes GET]]
     [ring.util.http-response :as response]
+    [ring.middleware.anti-forgery :refer [*anti-forgery-token*]]
     [clojure.java.io :as io]
     [hiccup.page :refer [html5 include-js include-css]]
   )
@@ -25,6 +26,9 @@
         "/assets/bootstrap/css/bootstrap.min.css"
         "/css/screen.css"
       )
+      [:script {:type "text/javascript"}
+        (str "var csrfToken = \"" *anti-forgery-token* "\";")
+      ]
       (include-js
         "/js/app.js"
       )

@@ -19,3 +19,8 @@ WHERE id = :id
 -- :doc deletes a user record given the id
 DELETE FROM users
 WHERE id = :id
+
+-- :name list-users :? :*
+-- :doc list users
+select * from users
+

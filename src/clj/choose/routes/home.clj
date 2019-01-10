@@ -13,6 +13,17 @@
 
 (def title "Choose")
 
+(defn users []
+  (html5
+    [:body
+      [:div "list of users"]
+      (for [u (db/list-users)]
+        [:div (:id u)]
+      )
+    ]
+  )
+)
+
 (defn home-page []
   (html5
     [:head
@@ -20,8 +31,9 @@
     ]
     [:body
       [:h1 title]
-      [:div.app
+      [:div#app
         "some text"
+        [:div.container]
       ]
       (include-css
         "/assets/bootstrap/css/bootstrap.min.css"
@@ -42,7 +54,11 @@
 
 (defroutes home-routes
   (GET "/" []
-       (home-page))
+    (home-page)
+  )
+  (GET "/users" []
+    (users)
+  )
   (GET "/intro" []
        (intro-page))
   (GET "/docs" []
